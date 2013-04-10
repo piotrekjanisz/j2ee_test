@@ -1,0 +1,5 @@
+#surefire
+#Wed Apr 10 16:04:44 CEST 2013
+user.dir=/Users/administrator/repos/j2ee_test/movies/dao
+localRepository=/Users/administrator/.m2/repository
+basedir=/Users/administrator/repos/j2ee_test/movies/dao

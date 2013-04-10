@@ -1,0 +1,4 @@
+CREATE TABLE PUBLIC.movies (
+	id INTEGER NOT NULL,
+	name varchar(255) NOT NULL
+);
