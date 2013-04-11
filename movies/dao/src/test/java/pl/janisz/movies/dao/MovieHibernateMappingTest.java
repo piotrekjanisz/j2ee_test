@@ -51,7 +51,6 @@ public class MovieHibernateMappingTest {
 		movie.setName("Dark Knight");
 		entityManager.persist(movie);
 		
-        List<Movie> result = entityManager.createQuery( "from Movie", Movie.class ).getResultList();
         entityManager.getTransaction().commit();
         entityManager.close();
 	}
