@@ -1,1 +1,1 @@
-INSERT INTO movies VALUES (1, 'Pulp Fiction');
+INSERT INTO movies(id, version, name) VALUES (1, 0, 'Pulp Fiction');

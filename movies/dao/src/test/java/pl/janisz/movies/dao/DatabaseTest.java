@@ -17,9 +17,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 public class DatabaseTest {
 
 	private EmbeddedDatabase database;
+	private JdbcTemplate jdbcTemplate;
 	
 	@Before public void setUpDatabase() {
 		database = new EmbeddedDatabaseBuilder().addDefaultScripts().build();
+		jdbcTemplate = new JdbcTemplate(database);
 	}
 	
 	@After public void tearDownDatabase() {
@@ -27,8 +29,24 @@ public class DatabaseTest {
 	}
 	
 	@Test public void testDatabaseIsNotEmpty() {
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(database);
 		List<Map<String, Object>> allMovies = jdbcTemplate.queryForList("SELECT * FROM movies");
 		assertThat(allMovies, is(not(empty())));
+	}
+	
+	@Test public void moviesTableHasIdColumn() {
+		assertThat(firstRowFromMoviesTable(), hasKey("ID"));
+	}
+	
+	@Test public void moviesTableHasVersionColumn() {
+		assertThat(firstRowFromMoviesTable(), hasKey("VERSION"));
+	}
+	
+	@Test public void moviesTableHasNameColumn() {
+		assertThat(firstRowFromMoviesTable(), hasKey("NAME"));
+	}
+	
+	private Map<String, Object> firstRowFromMoviesTable() {
+		List<Map<String, Object>> allMovies = jdbcTemplate.queryForList("SELECT * FROM movies");
+		return allMovies.get(0);
 	}
 }
