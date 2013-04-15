@@ -6,7 +6,6 @@
 </head>
 
 <body>
-    <h1>Movies</h1>
-    Welcome!
+    <p>${param}</p>
 </body>
 </html>
