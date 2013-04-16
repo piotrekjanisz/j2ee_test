@@ -28,7 +28,7 @@ public class DatabaseTest {
 		database.shutdown();
 	}
 	
-	@Test public void testDatabaseIsNotEmpty() {
+	@Test public void dsatabaseIsNotEmpty() {
 		List<Map<String, Object>> allMovies = jdbcTemplate.queryForList("SELECT * FROM movies");
 		assertThat(allMovies, is(not(empty())));
 	}

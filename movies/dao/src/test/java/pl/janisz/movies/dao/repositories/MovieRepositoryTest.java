@@ -31,7 +31,7 @@ public class MovieRepositoryTest {
 		assertThat(movies.findAll(), is(not(emptyIterable())));
 	}
 	
-	@Test public void canPersistMovie() {
+	@Test public void canSaveMovieAndThenFindIt() {
 		final String MOVIE_NAME = "Name of the Rose";
 		Movie newMovie = new Movie(MOVIE_NAME);
 		movies.save(newMovie);
