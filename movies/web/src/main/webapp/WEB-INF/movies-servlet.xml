@@ -12,8 +12,12 @@
         http://www.springframework.org/schema/mvc
          http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+	<import resource="classpath:applicationContext-dao.xml"/>
+	<import resource="classpath:applicationContext-service.xml"/>
+
+	<mvc:annotation-driven/>
     <context:component-scan base-package="pl.janisz.movies.web"/>
-    <mvc:annotation-driven/>
+    
     
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/views/"/>

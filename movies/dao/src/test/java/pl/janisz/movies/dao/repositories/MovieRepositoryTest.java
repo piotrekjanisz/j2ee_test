@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/applicationContext-testDao.xml")
+@ContextConfiguration("/applicationContext-dao.xml")
 @Transactional
 public class MovieRepositoryTest {
 

@@ -6,6 +6,19 @@
 </head>
 
 <body>
-    <p>${param}</p>
+	<h1>List of movies</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<#list movies as movie>
+			<tr>
+				<td>${movie.name}</td>
+			</tr>
+		</#list>
+	</table>
 </body>
 </html>

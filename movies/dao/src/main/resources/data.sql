@@ -1,0 +1,1 @@
+INSERT INTO movies(id, version, name) VALUES (default, 0, 'Pulp Fiction');
