@@ -37,6 +37,23 @@ public class MoviesServiceImplTest {
 		assertThat(moviesService.getAllMovies(), hasSize(3));
 	}
 	
+	@Test public void getMovieReturnsMovieWithGivenId() {
+		moviesService.setMovies(mockedMovieRepository());
+		assertThat(moviesService.getMovie(1L).getName(), is(equalTo("test2")));
+		assertThat(moviesService.getMovie(2L).getName(), is(equalTo("test3")));
+	}
+	
+	@Test public void addMovieSavesMovieInRepository() {
+		MovieRepository movieRepository = mockedMovieRepository();
+		moviesService.setMovies(movieRepository);
+		Movie newMovie = new Movie("Shining");
+		when(movieRepository.save(newMovie)).thenReturn(newMovie);
+		
+		moviesService.addMovie(newMovie);
+		
+		verify(movieRepository).save(newMovie);
+	}
+	
 	private MovieRepository mockedMovieRepository() {		
 		LinkedList<Movie> movieList = new LinkedList<Movie>(Arrays.asList(
 				new Movie("test1"),
@@ -45,6 +62,9 @@ public class MoviesServiceImplTest {
 				));
 		MovieRepository movieRepository = mock(MovieRepository.class);
 		when(movieRepository.findAll()).thenReturn(movieList);
+		for (int i = 0; i < movieList.size(); i++) {
+			when(movieRepository.findOne((long)i)).thenReturn(movieList.get(i));
+		}
 		return movieRepository;
 	}
 }

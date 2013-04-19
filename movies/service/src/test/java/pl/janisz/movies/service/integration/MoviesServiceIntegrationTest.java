@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import pl.janisz.movies.dao.dataModel.Movie;
 import pl.janisz.movies.service.MoviesServiceImpl;
 
 import static org.junit.Assert.assertThat;
@@ -22,5 +23,11 @@ public class MoviesServiceIntegrationTest {
 	
 	@Test public void returnsSomeValues() {
 		assertThat(moviesService.getAllMovies(), is(not(empty())));
+	}
+	
+	@Test public void savedValueCanBeFoundById() {
+		Movie newMovie = new Movie("Shining");
+		newMovie = moviesService.addMovie(newMovie);
+		assertThat(moviesService.getMovie(newMovie.getId()), notNullValue());
 	}
 }

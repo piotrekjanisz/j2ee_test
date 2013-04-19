@@ -23,4 +23,13 @@ public class MoviesServiceImpl {
 	public List<Movie> getAllMovies() {
 		return movies.findAll();
 	}
+
+
+	public Movie getMovie(Long id) {
+		return movies.findOne(id);
+	}
+	
+	public Movie addMovie(Movie movie) {
+		return movies.save(movie);
+	}
 }
